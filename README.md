@@ -212,4 +212,4 @@ $ aws s3 sync "/Users/Shared/gorilla_repo" s3://<gorilla_bucket_id> --exclude '*
 
 (Be sure to substitute your actual gorilla_bucket_id for `<gorilla_bucket_id>` -- unless you've changed things in `main.tf` it will be "gorilla-s3-bucket")
 
-Now it's just a matter of configuring your Gorilla clients to connect to your new repo. The [Gorilla wiki](https://github.com/gorilla/gorilla/wiki/Using-Basic-Authentication#configuring-the-clients-to-use-a-password) covers configuring the clients to use BasicAuthentication using the username and password you've chosen. Be sure also to set Gorilla's `SoftwareRepoURL` to "https://<cloudfront_url>" where you substitute the cloudfront_url you retreived earlier.
+Now it's just a matter of configuring your Gorilla clients to connect to your new repo. The [Gorilla wiki](https://github.com/1dustindavis/gorilla/wiki/Client-Configuration) covers configuring the clients to use BasicAuthentication using the username and password you've chosen. Be sure also to set Gorilla's `url` to "https://<cloudfront_url>" where you substitute the cloudfront_url you retreived earlier.
