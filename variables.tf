@@ -12,7 +12,7 @@ variable "munki_s3_bucket" {
 
 variable "prefix" {
   description = "Prefix before lambda and IAM names to ensure uniqueness in your account."
-  default     = "munki"
+  default     = "gorilla"
 }
 
 variable "price_class" {

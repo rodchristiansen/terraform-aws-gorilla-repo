@@ -4,7 +4,7 @@ resource "aws_cloudfront_distribution" "www_distribution" {
     domain_name = aws_s3_bucket.www.bucket_regional_domain_name
 
     // This can be any name to identify this origin.
-    origin_id = "munki"
+    origin_id = "gorilla"
 
     s3_origin_config {
       origin_access_identity = aws_cloudfront_origin_access_identity.origin_access_identity.cloudfront_access_identity_path
@@ -28,7 +28,7 @@ resource "aws_cloudfront_distribution" "www_distribution" {
     cached_methods         = ["GET", "HEAD"]
 
     // This needs to match the `origin_id` above.
-    target_origin_id = "munki"
+    target_origin_id = "gorilla"
     min_ttl          = var.default_cache_behavior_min_ttl
     default_ttl      = var.default_cache_behavior_default_ttl
     max_ttl          = var.default_cache_behavior_max_ttl
@@ -57,7 +57,7 @@ resource "aws_cloudfront_distribution" "www_distribution" {
     min_ttl                = var.catalogs_ordered_cache_behavior_min_ttl
     default_ttl            = var.catalogs_ordered_cache_behavior_default_ttl
     max_ttl                = var.catalogs_ordered_cache_behavior_max_ttl
-    target_origin_id       = "munki"
+    target_origin_id       = "gorilla"
 
     forwarded_values {
       query_string = false
@@ -83,7 +83,7 @@ resource "aws_cloudfront_distribution" "www_distribution" {
     min_ttl                = var.manifests_ordered_cache_behavior_min_ttl
     default_ttl            = var.manifests_ordered_cache_behavior_default_ttl
     max_ttl                = var.manifests_ordered_cache_behavior_max_ttl
-    target_origin_id       = "munki"
+    target_origin_id       = "gorilla"
 
     forwarded_values {
       query_string = false
@@ -109,7 +109,7 @@ resource "aws_cloudfront_distribution" "www_distribution" {
     min_ttl                = var.icons_ordered_cache_behavior_min_ttl
     default_ttl            = var.icons_ordered_cache_behavior_default_ttl
     max_ttl                = var.icons_ordered_cache_behavior_max_ttl
-    target_origin_id       = "munki"
+    target_origin_id       = "gorilla"
 
     forwarded_values {
       query_string = false
