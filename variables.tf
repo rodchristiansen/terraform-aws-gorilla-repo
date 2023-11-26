@@ -6,7 +6,7 @@ variable "password" {
   description = "Password clients use."
 }
 
-variable "munki_s3_bucket" {
+variable "gorilla_s3_bucket" {
   description = "The name of your s3 Bucket"
 }
 

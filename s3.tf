@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "www" {
-  bucket = "${var.prefix}-${var.munki_s3_bucket}"
+  bucket = "${var.prefix}-${var.gorilla_s3_bucket}"
 }
 
 resource "aws_s3_bucket_public_access_block" "www_access_block" {
@@ -88,7 +88,7 @@ resource "aws_s3_bucket_policy" "www" {
 }
 
 resource "aws_s3_bucket" "log_bucket" {
-  bucket = "${var.prefix}-${var.munki_s3_bucket}-logs"
+  bucket = "${var.prefix}-${var.gorilla_s3_bucket}-logs"
 }
 
 resource "aws_s3_bucket_acl" "log_bucket_acl" {

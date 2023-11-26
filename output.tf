@@ -1,4 +1,4 @@
-output "munki_bucket_id" {
+output "gorilla_bucket_id" {
   value = aws_s3_bucket.www.id
 }
 

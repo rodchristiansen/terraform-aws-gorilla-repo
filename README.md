@@ -39,14 +39,14 @@ Create a new empty directory wherever you want to store this. Inside that direct
 
 # prefix should be globally unique. Some characters seem to cause issues;
 # I'd recommend sticking with lower-case-letters and underscores
-# Something like org_yourorg_munki might be a good prefix.
+# Something like org_yourorg_gorilla might be a good prefix.
 variable "prefix" {
   default = "you_better_change_me"
 }
 
 # you'd need to change this only if you have an existing bucket named
 # "gorilla-s3-bucket"
-variable "munki_s3_bucket" {
+variable "gorilla_s3_bucket" {
   default = "gorilla-s3-bucket"
 }
 
@@ -137,7 +137,7 @@ provider "aws" {
 module "gorilla-repo" {
   source          = "grahamgilbert/gorilla-repo/aws"
   version         = "0.2.0"
-  munki_s3_bucket = var.munki_s3_bucket
+  gorilla_s3_bucket = var.gorilla_s3_bucket
   username        = var.username
   password        = var.password
   prefix          = var.prefix
@@ -151,8 +151,8 @@ output "cloudfront_url" {
   value = module.gorilla-repo.cloudfront_url
 }
 
-output "munki_bucket_id" {
-  value = module.gorilla-repo.munki_bucket_id
+output "gorilla_bucket_id" {
+  value = module.gorilla-repo.gorilla_bucket_id
 }
 
 output "username" {
@@ -188,7 +188,7 @@ $ terraform output cloudfront_url
 Get the S3 bucket id:
 
 ```bash
-$ terraform output munki_bucket_id
+$ terraform output gorilla_bucket_id
 ```
 
 (Unless you've changed it from the suggested name in the `main.tf` above, it will be "gorilla-s3-bucket")
@@ -204,12 +204,12 @@ $ terraform output password
 
 ## Getting your Gorilla repo into S3
 
-Assuming your repo is in `/Users/Shared/munki_repo` - adjust this path for your environment.
+Assuming your repo is in `/Users/Shared/gorilla_repo` - adjust this path for your environment.
 
 ```bash
-$ aws s3 sync "/Users/Shared/munki_repo" s3://<munki_bucket_id> --exclude '*.git/*' --exclude '.DS_Store' --delete
+$ aws s3 sync "/Users/Shared/gorilla_repo" s3://<gorilla_bucket_id> --exclude '*.git/*' --exclude '.DS_Store' --delete
 ```
 
-(Be sure to substitute your actual munki_bucket_id for `<munki_bucket_id>` -- unless you've changed things in `main.tf` it will be "gorilla-s3-bucket")
+(Be sure to substitute your actual gorilla_bucket_id for `<gorilla_bucket_id>` -- unless you've changed things in `main.tf` it will be "gorilla-s3-bucket")
 
 Now it's just a matter of configuring your Gorilla clients to connect to your new repo. The [Gorilla wiki](https://github.com/gorilla/gorilla/wiki/Using-Basic-Authentication#configuring-the-clients-to-use-a-password) covers configuring the clients to use BasicAuthentication using the username and password you've chosen. Be sure also to set Gorilla's `SoftwareRepoURL` to "https://<cloudfront_url>" where you substitute the cloudfront_url you retreived earlier.
