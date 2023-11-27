@@ -136,7 +136,7 @@ provider "aws" {
 
 module "gorilla-repo" {
   source          = "rodchristiansen/gorilla-repo/aws"
-  version         = "2023.11.26"
+  version         = "2023.11.27"
   gorilla_s3_bucket = var.gorilla_s3_bucket
   username        = var.username
   password        = var.password
