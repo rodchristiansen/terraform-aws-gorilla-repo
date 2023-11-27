@@ -1,6 +1,6 @@
 # Terraform Gorilla Repo
 
-`terraform-gorilla-repo` is a [Terraform](https://terraform.io) module that will set up a production-ready Gorilla repo for you. It is designed for use with Terraform 1.0.x More specifically, it will create:
+`terraform-gorilla-repo` is a [Terraform](https://terraform.io) module that will set up a production-ready [Gorilla](https://github.com/1dustindavis/gorilla) repo for you. It is designed for use with Terraform 1.0.x More specifically, it will create:
 
 - An S3 bucket to store your Gorilla repo
 - An S3 bucket to store your logs
